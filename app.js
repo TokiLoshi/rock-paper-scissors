@@ -24,14 +24,69 @@ function playerSelection() {
   }
   else {
     console.log(`Player selection: ${lowerChoice} is valid`)
-    return playerSelection
+    return lowerChoice
   }
 
 }
-getComputerChoice()
-playerSelection()
 
 // Play a round 
+function playRound(playerSelection, getComputerChoice) {
+  const player = playerSelection
+  const computer = getComputerChoice
+  console.log(`In round player: ${player}`)
+  console.log(`In round computer: ${computer}`)
+
+  // If computer choice and player choice the same: 
+    // it's a tie
+  if (player === computer) {
+    console.log('It\'s a tie')
+  }
+  else if (computer === 'rock'){
+    if (player === 'paper'){
+      console.log(`Player wins, they chose: ${player} and computer chose: ${computer}`)
+    }
+    else {
+      console.log(`Player loses, they chose: ${player} and computer chose: ${computer}`)
+    }
+  }
+  else if (computer === 'paper'){
+    if (player === 'scissors'){
+      console.log(`Player wins, they chose ${player} and computer chose: ${computer}`)
+    }
+    else {
+      console.log(`Player lost they chose ${player}, computer chose: ${computer}`)
+    }
+  }
+  else{
+    if (player === 'rock'){
+      console.log(`Player wins they chose: ${player}, computer chose: ${computer}`)
+    }
+    else {
+      console.log(`Player lost they chose: ${player}, computer chose: ${computer}`)
+    }
+  }
+  // If comptuer chose rock:
+    // If player chose paper - player wins
+    // Else if player chose rock - tie
+    // Else player loses
+
+  // Else if computer chose paper: 
+    // If player chose scissors - player wins
+    // Else if player chose scissors - tie
+    // Else player loses
+
+  // Else: 
+    // if player chose rock player wins
+    // else if player chose scissor's it's a tie
+    // else: player looses
+}
+const playerChoice = playerSelection()
+const computerChoice = getComputerChoice()
+console.log(`This should be player's choice: ${playerChoice}`)
+console.log(`This should be computer's choice: ${computerChoice}`)
+playRound(playerChoice, computerChoice)
+
+
 // function playRound(playerSelection, computerSelection) {
     // code goes hers
 
