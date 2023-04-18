@@ -36,49 +36,51 @@ function playRound(playerSelection, getComputerChoice) {
   console.log(`In round player: ${player}`)
   console.log(`In round computer: ${computer}`)
 
-  // If computer choice and player choice the same: 
-    // it's a tie
+  // It's a tie if computer and player choice the same
+  let winner = null;
   if (player === computer) {
     console.log('It\'s a tie')
+    winner = 'TIE'
   }
+
+  // Paper beats rock 
   else if (computer === 'rock'){
     if (player === 'paper'){
       console.log(`Player wins, they chose: ${player} and computer chose: ${computer}`)
+      winner = 'You won!'
     }
     else {
+      winner = 'You lost'
       console.log(`Player loses, they chose: ${player} and computer chose: ${computer}`)
     }
   }
+
+  // Scissors beat paper 
   else if (computer === 'paper'){
     if (player === 'scissors'){
+      winner = 'You won'
       console.log(`Player wins, they chose ${player} and computer chose: ${computer}`)
     }
     else {
+      winner = 'You lost'
       console.log(`Player lost they chose ${player}, computer chose: ${computer}`)
     }
   }
+
+  // Rock beatus scissors 
   else{
     if (player === 'rock'){
+      winner = 'You won' 
       console.log(`Player wins they chose: ${player}, computer chose: ${computer}`)
     }
     else {
+      winner = 'You lost'
       console.log(`Player lost they chose: ${player}, computer chose: ${computer}`)
     }
   }
-  // If comptuer chose rock:
-    // If player chose paper - player wins
-    // Else if player chose rock - tie
-    // Else player loses
 
-  // Else if computer chose paper: 
-    // If player chose scissors - player wins
-    // Else if player chose scissors - tie
-    // Else player loses
+  console.log(`We have a decision: ${winner}`)
 
-  // Else: 
-    // if player chose rock player wins
-    // else if player chose scissor's it's a tie
-    // else: player looses
 }
 const playerChoice = playerSelection()
 const computerChoice = getComputerChoice()
@@ -86,14 +88,6 @@ console.log(`This should be player's choice: ${playerChoice}`)
 console.log(`This should be computer's choice: ${computerChoice}`)
 playRound(playerChoice, computerChoice)
 
-
-// function playRound(playerSelection, computerSelection) {
-    // code goes hers
-
-// }
-// const playerSlection = 'rock';
-// const computerSelection = getComputerChoice();
-// console.log(playRound(playerSelection, computerSelection))
 
 // function takes Player's selection and computer's selection
 // Declares winner with something like 'You Lose! Paper beatss Rock' 
