@@ -1,23 +1,28 @@
-console.log("Welcome to rock paper scissors")
-
 // Get computer choice 
 function getComputerChoice() {
   console.log("Just a moment, the computer is choosing")
   const options = ['rock', 'paper', 'scissors']
+  // Generate random choice to return
   const compChoice = Math.floor(Math.random() * 3)
-  // Randomly return 'Rock', 'Paper' or 'Scissors'
+  
+  console.log(`Computer's choice in computer function: ${options[compChoice]}`)
+
   return options[compChoice]
 }
 
 // Get player choice: 
 function playerSelection() {
-  console.log('Your turn');
+  // Show player it's their turn
+  console.log('Player\'s turn');
   const yourTurn = document.createElement('p');
   console.log(`Your turn: ${yourTurn}`)
   const turn = document.querySelector('.container');
   console.log(`turn: ${turn}`)
-  yourTurn.textContent = "Your turn";
-  turn.append(yourTurn);
+  yourTurn.textContent = "It's Your turn";
+  const game = document.querySelector('.game')
+  game.insertBefore(yourTurn, turn);
+
+  // Add event listeners to buttons
   const buttons = document.querySelectorAll('button');
 
   buttons.forEach(button => {
@@ -25,6 +30,8 @@ function playerSelection() {
       alert(button.id);
       const playerChoice = button.id;
       console.log(`Player's choice: ${playerChoice}`);
+
+      // Return player's choice
       return playerChoice;
     })
   })
@@ -40,7 +47,9 @@ function playerSelection() {
 // Play a round 
 function playRound(playerSelection, getComputerChoice) {
   const player = playerSelection
+  console.log(`In round, player's choice: ${player}`)
   const computer = getComputerChoice
+  console.log(`In round: computer`)
   
   // It's a tie if computer and player choice the same
   let winner = null;
@@ -73,7 +82,7 @@ function playRound(playerSelection, getComputerChoice) {
     }
   }
 
-  // Rock beatus scissors 
+  // Rock beats scissors 
   else{
     if (player === 'rock'){
       winner = 'player'
@@ -97,12 +106,31 @@ function game() {
   let round = 0
 
   const computerChoice = getComputerChoice();
-  console.log(computerChoice);
+  console.log(`In game the computer's choice is: ${computerChoice}`);
   const playerChoice = playerSelection();
-  console.log(playerChoice);
+  console.log(`In game the player's choice is: ${playerChoice}`);
   let roundWinner = playRound(playerChoice, computerChoice);
   console.log(`Round winner in game: ${roundWinner}`);
   
+  if (roundWinner === 'player'){
+    playerScore += 1
+  }
+  else if (roundWinner === 'computer'){
+    computerScore += 1
+  }
+
+  round += 1
+  console.log(`Round: ${round}`)
+  console.log(`Player's score: ${playerScore}`)
+  console.log(`Computer's score: ${computerScore}`)
+
+  if (computerScore === 5){
+    alert("The computer has won!")
+  }
+  else if (playerScore === 5){
+    alert ("You have won!")
+  }
+
   // This is the part that plays exactly 5 rounds
   // for (i = 1; i <= 5; i++){
   //   console.log(`Round: ${i}`)
