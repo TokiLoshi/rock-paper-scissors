@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+button {
+  padding: 30px;
+  margin: 20px;
+}
+
+.score {
+  background: orange;
+  text-align: center;
+}
