@@ -129,7 +129,8 @@ function playRound(playerSelection, getComputerChoice) {
       winStatus.textContent = `You win ${player} beats ${computer} 🤩`;
     }
     else {
-      winner = 'computer'
+      winner = 'computer';
+      winStatus.textContent = `You lost ${computer} beats ${player} 😔`;
     }
   }
 
@@ -140,7 +141,7 @@ function playRound(playerSelection, getComputerChoice) {
       winStatus.textContent = `You win ${player} beats ${computer} 🤩`;
     }
     else {
-      winner = 'computer'
+      winner = 'computer';
       winStatus.textContent = `You lost ${computer} beats ${player} 😔`;
     }
   }
@@ -148,7 +149,7 @@ function playRound(playerSelection, getComputerChoice) {
   // Rock beats scissors 
   else{
     if (player === 'rock'){
-      winner = 'player'
+      winner = 'player';
       winStatus.textContent = `You won ${player} beats ${computer} 🤩`;
     }
     else {
