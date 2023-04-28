@@ -153,7 +153,7 @@ function playRound(playerSelection, getComputerChoice) {
     }
     else {
       winner = 'computer'
-      winStatus.textContent = `You lost ${computer} beats ${computer} 😔`;
+      winStatus.textContent = `You lost ${computer} beats ${player} 😔`;
     }
   }
   return winner
