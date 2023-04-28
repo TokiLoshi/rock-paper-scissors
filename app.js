@@ -7,7 +7,7 @@ function game() {
 
   // Create a score board for the div 
   const gameBoard = document.querySelector('.game');
-  const score = document.createElement('div');
+  const score = document.createElement('h3');
   score.textContent = "Score Board";
 
   // Create roundPlaceholder
@@ -81,7 +81,7 @@ function game() {
       }
       
       if (gameOn === false){
-        alert("Game time is over");
+        // alert("Game time is over");
         document.querySelector("#rock").remove()
         document.querySelector("#scissors").remove()
         document.querySelector("#paper").remove()
@@ -96,7 +96,7 @@ function game() {
         const startgame = document.querySelector('.newgame');
         
         startgame.addEventListener('click', () => {
-          alert("Should be able to start new game");
+          // alert("Should be able to start new game");
           location.reload()
         });
        
@@ -185,7 +185,6 @@ function playRound(playerSelection, getComputerChoice) {
 
 }
 
-
 const start = document.querySelector('#start');
 const container = document.querySelector('.container');
 const gameContainer = document.querySelector('.game')
@@ -194,8 +193,13 @@ start.addEventListener('click', () => {
   container.remove(start);
   const choices = document.createElement('div')
   choices.classList = "choices";
-  choices.textContent = "Let the game begin! The first to five wins";
+  choices.textContent = "Let the game begin! The first to five wins.";
   gameContainer.append(choices);
+
+  const hints = document.createElement('p');
+  hints.classList = "hints";
+  hints.textContent = "Hint: Rock beats scissors. Paper beats rock. Scissors beats paper.";
+  gameContainer.insertBefore(hints, choices)
 
   // Create rock
   const rock = document.createElement('button');
