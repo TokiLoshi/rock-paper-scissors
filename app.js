@@ -85,6 +85,9 @@ function game() {
         newGame.classList = 'newgame';
         newGame.textContent = 'New game';
         gameBoard.appendChild(newGame);
+
+        const hints = document.querySelector('.hints');
+        hints.remove()
         
         // handle option to start a new game and page reload
         const startgame = document.querySelector('.newgame');   
@@ -159,9 +162,15 @@ function playRound(playerSelection, getComputerChoice) {
 
 const start = document.querySelector('#start');
 const container = document.querySelector('.container');
-const gameContainer = document.querySelector('.game')
+const gameContainer = document.querySelector('.game');
+const credit = document.querySelector('.credit');
 start.addEventListener('click', () => {
+  
+  // Remove start button and credit
   container.remove(start);
+  credit.remove();
+
+
   const choices = document.createElement('div')
   choices.classList = "choices";
   choices.textContent = "Let the game begin! The first to five wins.";

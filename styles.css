@@ -40,6 +40,9 @@ button {
   margin: 20px;
 }
 
+a:active {
+  color: white;
+}
 .score {
   background: orange;
   text-align: center;
