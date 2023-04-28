@@ -8,25 +8,30 @@ function game() {
   // Create a score board for the div 
   const gameBoard = document.querySelector('.game');
   const score = document.createElement('h3');
+  const backdrop = document.createElement('div');
   score.textContent = "Score Board";
+  score.setAttribute('style', 'border-bottom: 1px solid rgb(237, 215, 235); padding-bottom: 20px;');
+  backdrop.setAttribute('style', 'color:  rgb(237, 215, 235); background: rgb(122, 64, 160); padding: 30px; margin: 30px; border-radius: 10px;');
 
   // Create roundPlaceholder
   const roundCounter = document.createElement('p');
   roundCounter.classList = 'roundcount';
+  roundCounter.setAttribute('style', 'border: 1px dashed rgb(237, 215, 235); padding: 10px; border-radius: 10px;')
   roundCounter.textContent = 'Round: ' + round;
   
   // Create placeholder for computer 
   const computer = document.createElement('p');
   computer.classList = "compscore";
-  computer.textContent = "Computer score: 0";
+  computer.textContent = "👾: 0";
 
   // Create placeholder for player
   const player = document.createElement('p');
   player.classList = "playerscore";
-  player.textContent = "Player's score: 0";
+  player.textContent = "You: 0";
 
   // Append everything to the board
-  gameBoard.append(score, computer, player, roundCounter);
+  gameBoard.append(backdrop);
+  backdrop.append(score, computer, player, roundCounter);
 
   // Listen for player's choices 
   buttons = document.querySelectorAll('button');
@@ -47,13 +52,13 @@ function game() {
       if (playingRound === 'computer'){
         computerScore++;
         const updatedComputer = document.querySelector('.compscore');
-        updatedComputer.textContent = "Computer Score: " + computerScore;
+        updatedComputer.textContent = "👾: " + computerScore;
         console.log(`New computer score: ${computerScore}`)
       }
       else if (playingRound === 'player'){
         playerScore++;
         const updatedPlayer = document.querySelector('.playerscore');
-        updatedPlayer.textContent = "Player Score: " + playerScore;
+        updatedPlayer.textContent = "You: " + playerScore;
         console.log(`New player score: ${playerScore}`)
       }
 
@@ -67,14 +72,12 @@ function game() {
 
       let gameOn = true;
       if (computerScore === 5) {
-        alert("That's it, the computer beat you!")
         const winner = document.querySelector('.choices');
         winner.textContent = "GAME OVER: COMPUTER WON 👾";
         gameOn = false;
 
       }
       else if (playerScore === 5) {
-        alert("Well done, you won!")
         const winner = document.querySelector('.choices');
         winner.textContent = "GAME OVER: YOU WIN! 🎉";
         gameOn = false;
@@ -89,7 +92,7 @@ function game() {
         // Allow users to start again
         const newGame = document.createElement('button')
         newGame.classList = 'newgame';
-        newGame.textContent = 'Start a New game';
+        newGame.textContent = 'New game';
         gameBoard.appendChild(newGame);
         
         // handle option to start a new game and page reload
@@ -135,7 +138,7 @@ function playRound(playerSelection, getComputerChoice) {
   // It's a tie if computer and player choice the same
   let winner = null;
   if (player === computer) {
-    winStatus.textContent = 'It\'s a tie';
+    winStatus.textContent = 'It\'s a tie 😮';
     console.log('It\'s a tie');
     winner = 'Tie';
   }
@@ -144,12 +147,12 @@ function playRound(playerSelection, getComputerChoice) {
   else if (computer === 'rock'){
     if (player === 'paper'){
       winner = 'player'
-      console.log(`You win ${player} beats chose: ${computer}`)
-      winStatus.textContent = `You win ${player} beats chose: ${computer}`;
+      console.log(`You win ${player} beats ${computer}`)
+      winStatus.textContent = `You win ${player} beats ${computer} 🤩`;
     }
     else {
       winner = 'computer'
-      console.log(`You lost ${computer} beats ${player}`)
+      console.log(`You lost ${computer} beats ${player} 😔`)
     }
   }
 
@@ -158,12 +161,12 @@ function playRound(playerSelection, getComputerChoice) {
     if (player === 'scissors'){
       winner = 'player';
       console.log(`You win ${player} beats ${computer}`);
-      winStatus.textContent = `You win ${player} beats ${computer}`;
+      winStatus.textContent = `You win ${player} beats ${computer} 🤩`;
     }
     else {
       winner = 'computer'
       console.log(`You lost ${computer} beats ${player}`)
-      winStatus.textContent = `You lost ${computer} beats ${player}`;
+      winStatus.textContent = `You lost ${computer} beats ${player} 😔`;
     }
   }
 
@@ -172,12 +175,12 @@ function playRound(playerSelection, getComputerChoice) {
     if (player === 'rock'){
       winner = 'player'
       console.log(`You won ${player} beats ${computer}`)
-      winStatus.textContent = `You won ${player} beats ${computer}`;
+      winStatus.textContent = `You won ${player} beats ${computer} 🤩`;
     }
     else {
       winner = 'computer'
       console.log(`You lost ${computer} beats ${computer}`)
-      winStatus.textContent = `You lost ${computer} beats ${computer}`;
+      winStatus.textContent = `You lost ${computer} beats ${computer} 😔`;
     }
   }
   console.log(`Winner is: ${winner}`)
